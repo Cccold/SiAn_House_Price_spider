@@ -6,7 +6,12 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from fake_useragent import UserAgent
 
+class RandomUserAgentMiddleware(object):
+    def process_request(self, request, spider):
+        ua = UserAgent()
+        request.headers['User-Agent'] = ua.random
 
 class SianHousePriceSpiderSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,

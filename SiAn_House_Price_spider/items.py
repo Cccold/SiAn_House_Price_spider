@@ -11,4 +11,25 @@ import scrapy
 class SianHousePriceSpiderItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    hose_url = scrapy.Field()
+    hose_img = scrapy.Field()#户型图
+    spider_add_time = scrapy.Field() #爬虫入库时间
+    lianjie_id = scrapy.Field()#链家编号
+    hose_title = scrapy.Field()#标题
+    hose_position = scrapy.Field()#区域位置
+    hose_community = scrapy.Field()#小区名字
+    hose_money = scrapy.Field()#总价
+    hose_money_m = scrapy.Field()#每平米
+    hose_unit_type = scrapy.Field()#户型
+    hose_area = scrapy.Field()#总面积
+    hose_real_area = scrapy.Field()#真实面积
+    hose_floor = scrapy.Field()#楼层
+    hose_added_time = scrapy.Field()#链家挂牌时间
+    hose_age_limit = scrapy.Field()# 房子年限 满三满2？
+    hose_attributes = scrapy.Field()#房屋属性 商品房？
+    host_mortgage = scrapy.Field()#抵押信息 是否贷款？
+
+
+
+   
+
