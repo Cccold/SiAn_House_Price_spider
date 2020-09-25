@@ -1,3 +1,9 @@
+'''
+@Author: MengHan
+@Go big or Go home
+@Date: 2020-09-25 15:18:17
+@LastEditTime: 2020-09-25 17:11:39
+'''
 # -*- coding: utf-8 -*-
 
 # Scrapy settings for SiAn_House_Price_spider project
@@ -14,6 +20,12 @@ BOT_NAME = 'SiAn_House_Price_spider'
 SPIDER_MODULES = ['SiAn_House_Price_spider.spiders']
 NEWSPIDER_MODULE = 'SiAn_House_Price_spider.spiders'
 
+MONGO_HOST = "47.98.246.112"  # 主机IP  
+MONGO_PORT = 27017  # 端口号  
+MONGO_DB = "hose"  # 库名  
+MONGO_COLL = "lianjia_selling_hose"  # collection名  
+MONGO_USER = "lianjia" #用户名  
+MONGO_PWD = "meiyoumima824655" #用户密码  
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'SiAn_House_Price_spider (+http://www.yourdomain.com)'
@@ -22,15 +34,15 @@ NEWSPIDER_MODULE = 'SiAn_House_Price_spider.spiders'
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
-#CONCURRENT_REQUESTS = 32
+CONCURRENT_REQUESTS = 5
 
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 #DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+# CONCURRENT_REQUESTS_PER_DOMAIN = 16
+# CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -65,9 +77,9 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'SiAn_House_Price_spider.pipelines.SianHousePriceSpiderPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'SiAn_House_Price_spider.pipelines.SianHousePriceSpiderPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

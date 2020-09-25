@@ -12,6 +12,7 @@ class RandomUserAgentMiddleware(object):
     def process_request(self, request, spider):
         ua = UserAgent()
         request.headers['User-Agent'] = ua.random
+        request.meta['proxy'] = "http://HQ60F7PAQBO68GWD:FBD9D819229DBB1B@http-dyn.abuyun.com:9020"
 
 class SianHousePriceSpiderSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
@@ -92,6 +93,7 @@ class SianHousePriceSpiderDownloaderMiddleware:
         # - return a Response object
         # - return a Request object
         # - or raise IgnoreRequest
+       
         return response
 
     def process_exception(self, request, exception, spider):

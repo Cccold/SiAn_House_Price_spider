@@ -1,3 +1,9 @@
+'''
+@Author: MengHan
+@Go big or Go home
+@Date: 2020-09-25 15:25:38
+@LastEditTime: 2020-09-25 15:25:39
+'''
 # -*- coding: utf-8 -*-
 import scrapy
 import time
@@ -32,4 +38,4 @@ class LianjiaSpiderSpider(scrapy.Spider):
         item['hose_age_limit'] = response.xpath('.//div[@class="transaction"]//li[5]/span[2]/text()').get()
         item['hose_attributes'] = response.xpath('.//div[@class="transaction"]//li[2]/span[2]/text()').get()
         item['host_mortgage'] = response.xpath('.//div[@class="transaction"]//li[last()-1]/span[2]/text()').get().replace(' ','').replace('\n','')
-        print(item)
+        yield item
