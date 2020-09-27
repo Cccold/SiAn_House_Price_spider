@@ -2,7 +2,7 @@
 @Author: MengHan
 @Go big or Go home
 @Date: 2020-09-27 13:25:50
-@LastEditTime: 2020-09-27 17:57:08
+@LastEditTime: 2020-09-27 18:11:19
 '''
 import scrapy
 import time
@@ -24,7 +24,8 @@ class LianjiaSpiderSpider(scrapy.Spider):
         page_r = re.compile('\d{2,3}')
         page = page_r.search( response.xpath('.//div[@class="page-box fr"]').get())
         if bool(page):
-            url_list = [response.url + f'pg{int(p) + 1}/' for p in page.group()]
+            url_list = [response.url + f'pg{int(p) + 1}/' for p in range(1,int(page.group()))]
+            print(url_list)
             for url in url_list:
                 print(url)
                 yield scrapy.Request(url=url, callback=self.get_detail_link)
