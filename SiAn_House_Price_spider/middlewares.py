@@ -5,14 +5,27 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import requests
+import json
 from scrapy import signals
+
 from fake_useragent import UserAgent
 
 class RandomUserAgentMiddleware(object):
     def process_request(self, request, spider):
         ua = UserAgent()
         request.headers['User-Agent'] = ua.random
-        request.meta['proxy'] = "http://HQ60F7PAQBO68GWD:FBD9D819229DBB1B@http-dyn.abuyun.com:9020"
+
+        r = requests.get('http://127.0.0.1:8000/?types=0&count=5&country=%E5%9B%BD%E5%86%85')
+        ip_ports = json.loads(r.text)
+        ip = ip_ports[0][0]
+        port = ip_ports[0][1]
+        # proxies={
+        #     # 'http':'http://%s:%s'%(ip,port),
+            
+        # }
+        # print(proxies)
+        request.meta['proxy'] = 'http://%s:%s'%(ip,port)
 
 class SianHousePriceSpiderSpiderMiddleware:
     # Not all methods need to be defined. If a method is not defined,
