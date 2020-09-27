@@ -2,7 +2,7 @@
 @Author: MengHan
 @Go big or Go home
 @Date: 2020-09-25 15:18:17
-@LastEditTime: 2020-09-25 17:11:39
+@LastEditTime: 2020-09-27 16:55:49
 '''
 # -*- coding: utf-8 -*-
 
@@ -24,6 +24,7 @@ MONGO_HOST = "47.98.246.112"  # 主机IP
 MONGO_PORT = 27017  # 端口号  
 MONGO_DB = "hose"  # 库名  
 MONGO_COLL = "lianjia_selling_hose"  # collection名  
+MONGO_COLL_2 = "lianjia_chengjiao_hose" #出售
 MONGO_USER = "lianjia" #用户名  
 MONGO_PWD = "meiyoumima824655" #用户密码  
 

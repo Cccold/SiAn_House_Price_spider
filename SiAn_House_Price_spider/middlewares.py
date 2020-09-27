@@ -16,7 +16,7 @@ class RandomUserAgentMiddleware(object):
         ua = UserAgent()
         request.headers['User-Agent'] = ua.random
 
-        r = requests.get('http://127.0.0.1:8000/?types=0&count=5&country=%E5%9B%BD%E5%86%85')
+        r = requests.get('http://47.98.246.112:8000/?types=0&count=5&country=%E5%9B%BD%E5%86%85')
         ip_ports = json.loads(r.text)
         ip = ip_ports[0][0]
         port = ip_ports[0][1]
