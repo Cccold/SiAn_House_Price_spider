@@ -2,7 +2,7 @@
 @Author: MengHan
 @Go big or Go home
 @Date: 2020-09-27 13:25:50
-@LastEditTime: 2020-09-27 17:31:23
+@LastEditTime: 2020-09-27 17:57:08
 '''
 import scrapy
 import time
@@ -17,14 +17,16 @@ class LianjiaSpiderSpider(scrapy.Spider):
     def parse(self, response):
         hose_url = response.xpath('.//div[@data-role="ershoufang"]/div[1]/a/@href').getall() #.position > dl:nth-child(2) > dd:nth-child(2) > div:nth-child(1) > div:nth-child(1) > a:nth-child(1)
         for url in hose_url:
+            #print(url)
             yield scrapy.Request('https://xa.lianjia.com' + url, callback=self.pick_up_index_link)
 
     def pick_up_index_link(self, response):
         page_r = re.compile('\d{2,3}')
         page = page_r.search( response.xpath('.//div[@class="page-box fr"]').get())
         if bool(page):
-            url_list = [response.url + f'pg{p}/' for p in page.group()]
+            url_list = [response.url + f'pg{int(p) + 1}/' for p in page.group()]
             for url in url_list:
+                print(url)
                 yield scrapy.Request(url=url, callback=self.get_detail_link)
     def get_detail_link(self,response):
         hose_url = response.css('.title > a::attr(href)').getall()
